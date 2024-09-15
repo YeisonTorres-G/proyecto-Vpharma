@@ -19,7 +19,9 @@
             </li>
             {% endfor %}
         </ul>
+        
 </nav>
+
 
 <div id="" class="">
     <h2 class="text-center fw-bold" style="color: #4E50B4;">{% if category %}{{ category.name }}{% else %}Productos destacados{% endif %}</h2>
@@ -36,8 +38,18 @@
                 <p class="card-title fw-medium">
                   <a href="{{ product.get_absolute_url }}" class="text-decoration-none" style="color: #4E50B4;">{{ product.name }}</a>
                 </p>
-                <p class="card-text fw-semibold" style="color: #4E50B4;">${{ product.price }}</p>
-                
+                <p class="card-text fw-semibold" style="color: #4E50B4;">Precio:  ${{ product.price }}</p>
+                <div>
+                  <form action="{% url "cart:cart_add" product.id %}" method="post">
+                    {{ cart_product_form }}
+                    {% csrf_token %}
+                    <input type="submit" value="Agregar al Carrito" style="background-color: #9394D5;" class="m-2">
+                  </form>
+                  <button type="button" class="btn btn-primary" style="background-color: #9394D5; color: #ffff; border: none;">
+                    Comprar
+                  </a>
+                </button>
+                </div>
               </div>
             </div>
           </div>
@@ -46,6 +58,55 @@
       </div>
     
 </div>
+<div id="" class="">
+  <h2 class="text-center fw-bold" style="color: #4E50B4;">{% if category %}{{ category.name }}{% else %}Productos destacados{% endif %}</h2>
+
+
+</div>
+                <!--INFORMACION-->
+<footer >
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-md-2 m-auto d-flex align-items-center">
+          <img src="{%static 'img/logo_v_pharma.png'%}" alt="" width="100px">
+        </div>
+
+        <div class="col-md-3 p-5 " style="background-color: #a9a9dd;">
+          <h3 style="color: white;">Contactos</h3>
+          <a style="color: white;"><img src="{%static 'img/footer/whatsapp.png'%}" alt="logo_Whatsapp" width="30px">     +57 3126647917</a><br>
+          <a href="" style="color: white; text-decoration: none;"><img src="{%static 'img/footer/gmail.png'%}" alt="" width="30px">   v-pharma@gmail.com</a>
+        </div>
+
+        <div class="col-md-3 p-5" style="background-color: #a9a9dd; ">
+          <h3 style="color: white;">Siguenos</h3>
+          <a href="" style="color: white; text-decoration: none;"><img src="{%static 'img/footer/instagram.png'%}" alt="logo_ig" width="30px">V-Pharma Oficial</a><br>
+          <a href="" style="color: white; text-decoration: none;"><img src="{%static 'img/footer/facebook.png'%}" alt="logo_facebook" width="30px">V-Pharma</a>
+        </div>
+        <div class="col-md-4 p-5" style="background-color: #a9a9dd;">
+          <div class="card" style="width: 18rem; background-color: #e7f1f6;">
+            <div class="card-body">
+              <p class="card-text">
+                <a href="" style="color: #4e50b4; text-decoration: none;"><img src="{%static 'img/footer/ayuda.png'%}" alt="icon_help" width="20px">   Ayuda</a><br>
+              </p>
+              <p>
+                <a href="quienes_somos.html" style="color: #4e50b4; text-decoration: none;"><img src="{%static 'img/footer/quienes _somos.png'%}" alt="icon_quien_somos" width="20px">   Quienes somos</a><br>
+              </p>
+              <p>
+                <a href="politicas_privacidad.html" style="color: #4e50b4;text-decoration: none;"><img src="{%static 'img/footer/politicas_privacidad.png'%}" alt=" icon_PdP" width="20px">   Politicas de Privacidad</a><br>
+              </p>
+              <p>
+                <a href="tyc.html" style="color: #4e50b4; text-decoration: none;"><img src="{%static 'img/footer/terminos-y-condiciones.png'%}" alt="icon_TyC" width="20px">   Terminos Y condiciones</a><br>
+              </p>
+              <p>
+                <a href="blog.html" style="color: #4e50b4; text-decoration: none;"><img src="{%static 'img/footer/blog.png'%}" alt="icon_blog" width="20px">   Blog</a><br>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</footer>
+
 
 
 {% endblock %}
