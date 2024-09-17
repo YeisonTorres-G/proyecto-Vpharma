@@ -5,21 +5,24 @@
   {{ product.name }}
 {% endblock %}
 {% block content %}
-  <div class="product-detail">
-    <img src="{% if product.image %}{{ product.image.url }}{% else %}
-    {% static "img/no_image.png" %}{% endif %}">
-    <h1>{{ product.name }}</h1>
-    <h2>
-      <a href="{{ product.category.get_absolute_url }}">
-        {{ product.category }}
-      </a>
-    </h2>
-    <p class="price">${{ product.price }}</p>
-    <form action="{% url "cart:cart_add" product.id %}" method="post">
-      {{ cart_product_form }}
-      {% csrf_token %}
-      <input type="submit" value="Add to cart">
-    </form>
-    {{ product.description|linebreaks }}
+  <!-------------------------------------------------------------------------------------------------------------------->
+<div class="container mt-5">
+  <div class="row" style="color: #4E50B4;">
+    <div class="col">
+      <h2 style="color: #4E50B4;"><strong>{{ product.name }}</strong></h2>
+      <p class="price">Precio:  ${{ product.price }}</p>
+      <p>{{ product.description|linebreaks }}</p>
+
+      <form action="{% url "cart:cart_add" product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input type="submit" value="Agregar al carrito" class="mt-5" style="background-color: #4E50B4;">
+      </form>
+    </div>
+    <div class="col">
+      <img src="{% if product.image %}{{ product.image.url }}{% else %}
+      {% static "img/no_image.png" %}{% endif %}">
+    </div>
   </div>
+</div>
 {% endblock %}

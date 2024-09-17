@@ -37,4 +37,7 @@ def cart_detail(request):
         item['update_quantity_form'] = CartAddProductForm(
             initial={'quantity': item['quantity'], 'override': True}
         )
-    return render(request, 'cart/detail.html', {'cart': cart})
+    # Añadimos la variable para verificar si el carrito está vacío
+    carrito_vacio = len(cart) == 0
+
+    return render(request, 'cart/detail.html', {'cart': cart, 'carrito_vacio': carrito_vacio})

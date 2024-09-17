@@ -2,6 +2,11 @@ from django.shortcuts import get_object_or_404, render
 
 from cart.forms import CartAddProductForm
 from .models import Category, Product
+from django.http import HttpResponse
+
+def prueba_ayuda(request):
+    return HttpResponse("Esto es una prueba para la vista ayuda.")
+
 
 
 def product_list(request, category_slug=None):
@@ -32,4 +37,14 @@ def product_detail(request, id, slug):
         'shop/product/detail.html',
         {'product': product, 'cart_product_form': cart_product_form},
     )
+
+def ayuda(request):
+    return render(request, 'info/ayuda.html')
+
+def blog(request):
+    return render(request, 'shop/product/blog.html')
+
+
+
+
    

@@ -82,17 +82,18 @@
                 <a class="nav-link" aria-disabled="true"></a>
               </li>
             </ul>
-            <div id="" class="d-flex align-items-center" style="position: relative; left: -20px;">
-              <div class="">
+            <div class="d-flex align-items-center" style="position: relative; left: -20px;">
+              <div>
                 {% with total_items=cart|length %}
                   {% if total_items > 0 %}
-                    <a href="{% url 'cart:cart_detail' %}" style="color: #4E50B4;">
-                      Your cart: {{ total_items }} item{{ total_items|pluralize }},
-                      ${{ cart.get_total_price }}
+                    <!-- Mostrar el ícono del carrito lleno si hay productos -->
+                    <a href="{% url 'cart:cart_detail' %}" class="carrito">
+                      <img id="icono-carrito" src="{% static 'img/carrito-lleno.png' %}" alt="Carrito lleno" width="50px"/>
                     </a>
                   {% else %}
-                    <a href="{% url 'cart:cart_detail' %}">
-                      <img src={% static 'img/carrito-de-compras.png' %} alt="logo" width="40">
+                    <!-- Mostrar el ícono del carrito vacío si no hay productos -->
+                    <a href="{% url 'cart:cart_detail' %}" class="carrito">
+                      <img id="icono-carrito" src="{% static 'img/carrito-vacio.png' %}" alt="Carrito vacío" width="50px"/>
                     </a>
                   {% endif %}
                 {% endwith %}

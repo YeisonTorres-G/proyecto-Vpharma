@@ -58,7 +58,7 @@ ROOT_URLCONF = 'myshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'myshop_db',
-        'USER': 'admin',
-        'PASSWORD': 'julian2006-04',
-        'HOST': 'database-1.c1sc2k4a0g3o.us-east-1.rds.amazonaws.com',
+        'NAME': 'my_shop',
+        'USER': 'root',
+        'PASSWORD': 'rootyeison',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
@@ -147,3 +147,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 CART_SESSION_ID = 'cart'
+
