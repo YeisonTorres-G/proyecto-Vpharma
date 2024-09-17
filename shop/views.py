@@ -41,9 +41,17 @@ def product_detail(request, id, slug):
 def ayuda(request):
     return render(request, 'info/ayuda.html')
 
-def blog(request):
-    return render(request, 'shop/product/blog.html')
+def quienes_somos(request):
+    return render(request, 'info/quienes_somos.html')
 
+def politica_privacidad(request):
+    return render(request, 'info/politica_privacidad.html')
+
+def tyc(request):
+    return render(request, 'info/terminos_condiciones.html')
+
+def blog(request):
+    return render(request, 'info/blog.html')
 
 
 
