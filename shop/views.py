@@ -4,15 +4,13 @@ from cart.forms import CartAddProductForm
 from .models import Category, Product
 from django.http import HttpResponse
 
-def prueba_ayuda(request):
-    return HttpResponse("Esto es una prueba para la vista ayuda.")
-
 
 
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
+    cart_product_form = CartAddProductForm()  # Agregar el formulario aquí
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
@@ -23,6 +21,7 @@ def product_list(request, category_slug=None):
             'category': category,
             'categories': categories,
             'products': products,
+            'cart_product_form': cart_product_form,  # Pasar el formulario al contexto
         },
     )
 

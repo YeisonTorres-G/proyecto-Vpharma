@@ -40,11 +40,11 @@
                 </p>
                 <p class="card-text fw-semibold" style="color: #4E50B4;">Precio:  ${{ product.price }}</p>
                 <div>
-                  <form action="{% url "cart:cart_add" product.id %}" method="post">
+                  <form action="{% url 'cart:cart_add' product.id %}" method="post">
                     {{ cart_product_form }}
                     {% csrf_token %}
                     <input type="submit" value="Agregar al Carrito" style="background-color: #9394D5;" class="m-2">
-                  </form>
+                </form>
                   <button type="button" class="btn btn-primary" style="background-color: #9394D5; color: #ffff; border: none;">
                     Comprar
                   </a>
@@ -86,7 +86,7 @@
           <div class="card" style="width: 18rem; background-color: #e7f1f6;">
             <div class="card-body">
               <p class="card-text">
-                <a  href="" style="color: #4e50b4; text-decoration: none;"><img src="{%static 'img/footer/ayuda.png'%}" alt="icon_help" width="20px">   Ayuda</a><br>
+                <a  href="{% url 'shop:ayuda'%}" style="color: #4e50b4; text-decoration: none;"><img src="{%static 'img/footer/ayuda.png'%}" alt="icon_help" width="20px">   Ayuda</a><br>
               </p>
               <p>
                 <a href="{% url 'shop:quienes_somos'%}" style="color: #4e50b4; text-decoration: none;"><img src="{%static 'img/footer/quienes _somos.png'%}" alt="icon_quien_somos" width="20px">   Quienes somos</a><br>
