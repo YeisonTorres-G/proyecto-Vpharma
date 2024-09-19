@@ -18,6 +18,20 @@
         {% csrf_token %}
         <input type="submit" value="Agregar al carrito" class="mt-5" style="background-color: #4E50B4;">
       </form>
+      {% if user.is_authenticated %}
+      
+      {% if is_favorite %}
+        <form action="{% url 'favorite:remove_from_favorites' product.id %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Remove from Favorites">
+        </form>
+      {% else %}
+        <form action="{% url 'favorite:add_to_favorites' product.id %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Add to Favorites" class="mt-5" style="background-color: #4E50B4;">
+        </form>
+      {% endif %}
+    {% endif %}
     </div>
     <div class="col">
       <img src="{% if product.image %}{{ product.image.url }}{% else %}
