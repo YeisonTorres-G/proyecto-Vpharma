@@ -6,7 +6,13 @@
 {% endblock %}
 {% block content %}
   <!-------------------------------------------------------------------------------------------------------------------->
-<div class="container mt-5">
+<div>
+  <button class="btn d-flex pm-0" onclick="history.back()">
+    <img src="{% static 'img/iconos/atras.png' %}" alt="Volver" style="width: 40px; height: 40px; border: none;">
+    
+  </button>
+</div>
+  <div class="container mt-5">
   <div class="row" style="color: #4E50B4;">
     <div class="col">
       <h2 style="color: #4E50B4;"><strong>{{ product.name }}</strong></h2>

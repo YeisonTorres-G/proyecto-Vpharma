@@ -27,36 +27,49 @@
     <h2 class="text-center fw-bold" style="color: #4E50B4;">{% if category %}{{ category.name }}{% else %}Productos destacados{% endif %}</h2>
     
     <div class="container mt-5">
-        <div class="row g-3"> <!-- Clase g-3 para espaciado uniforme entre columnas -->
+      <div class="row g-3">
           {% for product in products %}
           <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card product-card">
-              <a href="{{ product.get_absolute_url }}" class="d-flex justify-content-center">
-                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="card-img-top img-thumbnail" alt="{{ product.name }}">
-              </a>
-              <div class="card-body">
-                <p class="card-title fw-medium">
-                  <a href="{{ product.get_absolute_url }}" class="text-decoration-none" style="color: #4E50B4;">{{ product.name }}</a>
-                </p>
-                <p class="card-text fw-semibold" style="color: #4E50B4;">Precio:  ${{ product.price }}</p>
-                <div>
-                  <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                    {{ cart_product_form }}
-                    {% csrf_token %}
-                    <input type="submit" value="Agregar al Carrito" style="background-color: #9394D5;" class="m-2">
-                </form>
-                  <button type="button" class="btn btn-primary" style="background-color: #9394D5; color: #ffff; border: none;">
-                    Comprar
+              <div class="card product-card">
+                  <a href="{{ product.get_absolute_url }}" class="d-flex justify-content-center">
+                      <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="card-img-top img-thumbnail" alt="{{ product.name }}">
                   </a>
-                </button>
-                </div>
+                  <div class="card-body text-center">
+                      <p class="card-title fw-medium">
+                          <a href="{{ product.get_absolute_url }}" class="text-decoration-none" style="color: #4E50B4;">{{ product.name }}</a>
+                      </p>
+                      <p class="card-text fw-semibold" style="color: #4E50B4;">Precio:  ${{ product.price }}</p>
+                      <form action="{% url 'cart:cart_add' product.id %}" method="post" class="me-">
+                        {{ cart_product_form }}
+                      <div class="d-flex justify-content-center align-items-center mt-3">
+                          <!-- Formulario para agregar al carrito -->
+
+                              {% csrf_token %}
+                              <button class="btn m-2" style="background-color: #34DD78; border-radius: 50%; border: none;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16" style="color: #4E50B4;">
+                                      <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                                  </svg> 
+                              </button>
+                          </form>
+  
+                          <!-- Formulario para agregar a favoritos -->
+                          <form action="{% url 'favorite:add_to_favorites' product.id %}" method="post">
+                              {% csrf_token %}
+                              <button class="btn" style="background-color: #4E50B4; border-radius: 50%; border: none;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16" style="color: #FFFFFF;">
+                                      <path d="M8 3.314C12.438-1.248 23.534 4.735 8 15-7.534 4.736 3.562-1.248 8 3.314z"/>
+                                  </svg>
+                              </button>
+                          </form>
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
           {% endfor %}
-        </div>
       </div>
-    
+  </div>
+  
+  
 </div>
 <div id="" class="">
   <h2 class="text-center fw-bold" style="color: #4E50B4;">{% if category %}{{ category.name }}{% else %}Productos destacados{% endif %}</h2>
